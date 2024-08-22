@@ -23,8 +23,7 @@ class ImageRequest(BaseModel):
 # Carregamento do Modelo de Machine Learning
 def load_model():
     global xgb_model_carregado
-    file_path = 'workspaces/mba-deeplearning-iad-006-2024-public/models/'
-    with open(file_path+"xgb_model.pkl", 'rb') as f:
+    with open("models/xgb_model.pkl", 'rb') as f:
         xgb_model_carregado = pk.load(f)
 
 # Inicialização da aplicação

@@ -3,5 +3,6 @@ uvicorn
 scikit-learn
 xgboost
 matplotlib
+pandas
+numpy
 flask
-pickle
