@@ -23,7 +23,8 @@ class ImageRequest(BaseModel):
 # Carregamento do Modelo de Machine Learning
 def load_model():
     global xgb_model_carregado
-    with open('xgb_model.pkl', 'rb') as f:
+    file_path = 'workspaces/mba-deeplearning-iad-006-2024-public/models/'
+    with open(file_path+"xgb_model.pkl", 'rb') as f:
         xgb_model_carregado = pk.load(f)
 
 # Inicialização da aplicação
@@ -49,3 +50,9 @@ async def predict(request: ImageRequest):
     predction = xgb_model_carregado.predict(img_array)
 
     return{'predction': predction}
+
+# Endpoint de Healthcheck
+@app.get('/healthcheck')
+async def healthcheck():
+    # retorna um objeto com um campo status com valor 'ok' se a aplicação estiver funcionando corretamente
+    return{'status': 'ok'}
